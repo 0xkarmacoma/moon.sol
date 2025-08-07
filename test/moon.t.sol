@@ -18,11 +18,13 @@ contract MoonTest is Test {
     function setUp() public {
         m = new moon();
         f = new fullmoon();
+
+        // set the time to the current time by default
+        vm.warp(vm.unixTime() / 1000);
     }
 
     function test_fullmoon_currenttime() public {
         // use this to avoid the extra spaces at the beginning or between args
-        vm.warp(vm.unixTime() / 1000);
         console.log("\n%s", string(f.northern()));
     }
 
@@ -49,6 +51,8 @@ contract MoonTest is Test {
     function test_moon_northern() public view {
         bytes memory mb = m.northern();
         bytes memory fb = f.northern();
+
+        console.log("\n%s", string(mb));
 
         assertEq(mb, fb);
     }
