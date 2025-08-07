@@ -4,14 +4,18 @@ pragma solidity ^0.8.30;
 contract fullmoon {
     int private constant b = 44;
 
-    function northern() public view returns (string memory) {
+    fallback(bytes calldata) external returns (bytes memory) {
+        return bytes(northern());
+    }
+
+    function northern() public view returns (bytes memory o) {
         int a = 2551443;
         int x = -b;
         int y = 2 - b;
         int z = (((int(block.timestamp) - 592531) % a) << 9) / a;
 
         // output buffer, index and character to push
-        bytes memory o = new bytes(1024);
+        o = new bytes(1024);
         uint i = 0;
         bytes1 c;
 
@@ -38,7 +42,5 @@ contract fullmoon {
             }
             o[i++] = c;
         }
-
-        return string(o);
     }
 }

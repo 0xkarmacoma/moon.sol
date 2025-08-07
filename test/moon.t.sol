@@ -23,32 +23,32 @@ contract MoonTest is Test {
     function test_fullmoon_currenttime() public {
         // use this to avoid the extra spaces at the beginning or between args
         vm.warp(vm.unixTime() / 1000);
-        console.log("\n%s", f.northern());
+        console.log("\n%s", string(f.northern()));
     }
 
     function test_fullmoon_fullmoon() public {
         vm.warp(1754689746);
-        console.log("\n%s", f.northern());
+        console.log("\n%s", string(f.northern()));
     }
 
     function test_fullmoon_lastquarter() public {
         vm.warp(1755337746);
-        console.log("\n%s", f.northern());
+        console.log("\n%s", string(f.northern()));
     }
 
     function test_fullmoon_newmoon() public {
         vm.warp(1755971346);
-        console.log("\n%s", f.northern());
+        console.log("\n%s", string(f.northern()));
     }
 
     function test_fullmoon_firstquarter() public {
         vm.warp(1756601346);
-        console.log("\n%s", f.northern());
+        console.log("\n%s", string(f.northern()));
     }
 
     function test_moon_northern() public view {
-        string memory mb = m.northern();
-        string memory fb = f.northern();
+        bytes memory mb = m.northern();
+        bytes memory fb = f.northern();
 
         assertEq(mb, fb);
     }
