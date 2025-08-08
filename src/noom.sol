@@ -3,7 +3,7 @@ pragma solidity ^0.8.30;
 
 abstract contract noom {
     int constant b = 44;
-    uint constant s = 1024;
+    uint constant s = 910;
     bytes constant p = "#.";
     bytes1 constant d = bytes1(' ');
     bytes1 constant l = bytes1('\n');

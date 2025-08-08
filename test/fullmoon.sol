@@ -1,6 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.30;
 
+import {console} from "forge-std/console.sol";
+
+
+// used as a reference implementation for tests
 contract fullmoon {
     int private constant b = 44;
 
@@ -23,7 +27,7 @@ contract fullmoon {
         int z = (((ts - 592531) % a) << 9) / a;
 
         // output buffer, index and character to push
-        o = new bytes(1024);
+        o = new bytes(910);
         uint i = 0;
         bytes1 c;
 
@@ -50,5 +54,7 @@ contract fullmoon {
             }
             o[i++] = c;
         }
+
+        console.log("i =", i);
     }
 }

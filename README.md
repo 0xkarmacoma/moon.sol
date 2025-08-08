@@ -1,13 +1,31 @@
-## moon.sol
+# moon.sol
+
+## context
+
+The [2024/kurdyukov1](https://www.ioccc.org/2024/kurdyukov1/index.html) IOCCC entry is a compact C program that reads the current time and prints the current phase of the moon from the Northern hemisphere:
 
 ```
-forge test --mt test_fullmoon_currenttime -vvv
-[⠊] Compiling...
-No files changed, compilation skipped
+# prog.c
 
-Ran 1 test for test/moon.t.sol:MoonTest
-[PASS] test_fullmoon_currenttime() (gas: 886167)
-Logs:
+#include <time.h>
+#include <stdio.h>
+
+        a,b=44,x,
+     y,z;main()  {!a
+   ?a=2551443,x=    -b
+  ,y=2-b,z=((time     (
+ 0)-592531)%a<<9)/     a
+ :putchar(++x>=a?x     =
+ -b,y+=4,10:x<0?x=     x
+ *x+y*y<b*b?a=1-x,     -
+  1:x+1,32:"#."[(     x
+   <a*(~z&255)>>    8)
+     ^z>>8]),y>  b?0
+        :main();}
+```
+
+```
+# ./prog
 
                 ..############
             ...###################
@@ -31,31 +49,28 @@ Logs:
          ....########################
             ...###################
                 ..############
-
-
-Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 4.51ms (4.04ms CPU time)
-
-Ran 1 test suite in 205.06ms (4.51ms CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)
 ```
 
-### Development
+Since it only uses the current timestamp and integer arithmetic, it is actually fairly straightforward to convert to Solidity (see [src/moon.sol](https://github.com/0xkarmacoma/moon.sol/blob/main/src/moon.sol)).
+
+
+
+## Development
 
 ```
-#
-
 # deploy to anvil (--from one of the default unlocked addresses)
 forge create fullmoon --unlocked --from 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 --rpc-url 127.0.0.1:8545 --broadcast
 ...
-Deployed to: 0x5FbDB2315678afecb367f032d93F642f64180aa3
+Deployed to: <addr>
 
 # call the deployed contract
-cast call --rpc-url 127.0.0.1:8545 0x5FbDB2315678afecb367f032d93F642f64180aa3 | cast to-ascii
+cast call --rpc-url 127.0.0.1:8545 <addr> | cast to-ascii
 
 # invoke with an explicit timestamp
-cast call 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0 $(echo 0x123456 | cast to-int256) | cast to-ascii
+cast call <addr> $(echo 0x123456 | cast to-int256) | cast to-ascii
 
-# do a cool animation
-for ts in $(seq -f "%.0f" 123456789 36000 223456789) ; do clear ; cast call 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0 $(cast to-int256 $ts) | cast to-ascii ; sleep 0.1 ; done
+# run the animation
+./bin/animate.sh <addr>
 
 ```
 

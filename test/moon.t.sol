@@ -5,7 +5,7 @@ import {Test, console} from "forge-std/Test.sol";
 import {LibString} from "solady/utils/LibString.sol";
 
 import {moon} from "src/moon.sol";
-import {fullmoon} from "src/fullmoon.sol";
+import {fullmoon} from "./fullmoon.sol";
 
 // full moon: 1754689746
 // last quarter: 1755337746
