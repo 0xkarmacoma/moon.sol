@@ -49,7 +49,7 @@ contract MoonTest is Test {
     }
 
     function test_moon_equal_to_fullmoon() public view {
-        bytes memory mb = m.northern();
+        bytes memory mb = m.n();
         bytes memory fb = f.northern();
 
         console.log("\n%s", string(mb));
@@ -58,6 +58,6 @@ contract MoonTest is Test {
     }
 
     function test_moon_northern_gas_snapshot() public view {
-        m.northern();
+        m.n();
     }
 }
