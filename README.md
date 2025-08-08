@@ -1,5 +1,7 @@
 # moon.sol
 
+![Moon Phase Animation](static/moon.svg)
+
 ## context
 
 The [2024/kurdyukov1](https://www.ioccc.org/2024/kurdyukov1/index.html) IOCCC entry is a compact C program that reads the current time and prints the current phase of the moon from the Northern hemisphere:
@@ -71,7 +73,6 @@ cast call <addr> $(echo 0x123456 | cast to-int256) | cast to-ascii
 
 # run the animation
 ./bin/animate.sh <addr>
-
 ```
 
 ### credits
