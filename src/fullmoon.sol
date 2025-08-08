@@ -4,15 +4,19 @@ pragma solidity ^0.8.30;
 contract fullmoon {
     int private constant b = 44;
 
-    fallback(bytes calldata) external returns (bytes memory) {
-        return bytes(northern());
+    fallback(bytes calldata data) external returns (bytes memory) {
+        int timestamp = int(block.timestamp);
+        if (data.length != 0) {
+            timestamp = abi.decode(data, (int));
+        }
+        return northern(timestamp);
     }
 
-    function northern() public view returns (bytes memory o) {
+    function northern(int ts) public pure returns (bytes memory o) {
         int a = 2551443;
         int x = -b;
         int y = 2 - b;
-        int z = (((int(block.timestamp) - 592531) % a) << 9) / a;
+        int z = (((ts - 592531) % a) << 9) / a;
 
         // output buffer, index and character to push
         o = new bytes(1024);
