@@ -48,12 +48,16 @@ contract MoonTest is Test {
         console.log("\n%s", string(f.northern()));
     }
 
-    function test_moon_northern() public view {
+    function test_moon_equal_to_fullmoon() public view {
         bytes memory mb = m.northern();
         bytes memory fb = f.northern();
 
         console.log("\n%s", string(mb));
 
         assertEq(mb, fb);
+    }
+
+    function test_moon_northern_gas_snapshot() public view {
+        m.northern();
     }
 }

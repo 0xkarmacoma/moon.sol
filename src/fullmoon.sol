@@ -12,6 +12,10 @@ contract fullmoon {
         return northern(timestamp);
     }
 
+    function northern() public view returns (bytes memory o) {
+        return northern(int(block.timestamp));
+    }
+
     function northern(int ts) public pure returns (bytes memory o) {
         int a = 2551443;
         int x = -b;
