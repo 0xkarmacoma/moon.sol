@@ -6,7 +6,7 @@
 
 The [2024/kurdyukov1](https://www.ioccc.org/2024/kurdyukov1/index.html) IOCCC entry is a compact C program that reads the current time and prints the current phase of the moon from the Northern hemisphere:
 
-```
+```c
 # prog.c
 
 #include <time.h>
@@ -26,36 +26,36 @@ The [2024/kurdyukov1](https://www.ioccc.org/2024/kurdyukov1/index.html) IOCCC en
         :main();}
 ```
 
+Since it only uses the current timestamp and integer arithmetic, it is actually fairly straightforward to convert to Solidity (see [src/moon.sol](https://github.com/0xkarmacoma/moon.sol/blob/main/src/moon.sol))
+
+The contract is deployed on mainnet at address XYZ and can be invoked by anyone. It will read the current timestamp from the blockchain and render the current moon phase:
+
+```sh
+cast call XYZ | cast to-ascii
+
+               ..############
+           ...###################
+        ....########################
+      ....############################
+    .....###############################
+   .....#################################
+  .....###################################
+ ......####################################
+ ......####################################
+......######################################
+......######################################
+......######################################
+......######################################
+ ......####################################
+ ......####################################
+  .....###################################
+   .....#################################
+    .....###############################
+      ....############################
+        ....########################
+           ...###################
+               ..############
 ```
-# ./prog
-
-                ..############
-            ...###################
-         ....########################
-       ....############################
-     .....###############################
-    .....#################################
-   .....###################################
-  ......####################################
-  ......####################################
- ......######################################
- ......######################################
- ......######################################
- ......######################################
-  ......####################################
-  ......####################################
-   .....###################################
-    .....#################################
-     .....###############################
-       ....############################
-         ....########################
-            ...###################
-                ..############
-```
-
-Since it only uses the current timestamp and integer arithmetic, it is actually fairly straightforward to convert to Solidity (see [src/moon.sol](https://github.com/0xkarmacoma/moon.sol/blob/main/src/moon.sol)).
-
-
 
 ## Development
 
@@ -75,6 +75,3 @@ cast call <addr> $(echo 0x123456 | cast to-int256) | cast to-ascii
 ./bin/animate.sh <addr>
 ```
 
-### credits
-
-https://www.ioccc.org/2024/kurdyukov1/index.html
