@@ -59,14 +59,20 @@ cast call XYZ | cast to-ascii
 
 ## Development
 
-```
+```sh
+# run anvil in the background
+anvil
+
+# set anvil as the target
+export ETH_RPC_URL=127.0.0.1:8545
+
 # deploy to anvil (--from one of the default unlocked addresses)
-forge create fullmoon --unlocked --from 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266 --rpc-url 127.0.0.1:8545 --broadcast
+forge create moon --unlocked --from 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266  --broadcast
 ...
 Deployed to: <addr>
 
 # call the deployed contract
-cast call --rpc-url 127.0.0.1:8545 <addr> | cast to-ascii
+cast call <addr> | cast to-ascii
 
 # invoke with an explicit timestamp
 cast call <addr> $(echo 0x123456 | cast to-int256) | cast to-ascii
@@ -75,3 +81,10 @@ cast call <addr> $(echo 0x123456 | cast to-int256) | cast to-ascii
 ./bin/animate.sh <addr>
 ```
 
+## Acknowledgements
+
+Credit goes to Ilya Kurdyukov for the original C implementation as submitted to the IOCCC. All bugs and mistakes in the Solidity port are my own.
+
+## Disclaimer
+
+_This code is being provided as is. No guarantee, representation or warranty is being made, express or implied, as to the safety or correctness of the code. It has not been audited and as such there can be no assurance it will work as intended, and users may experience delays, failures, errors, omissions or loss of transmitted information. Nothing in this repo should be construed as investment advice or legal advice for any particular facts or circumstances and is not meant to replace competent counsel. It is strongly advised for you to contact a reputable attorney in your jurisdiction for any questions or concerns with respect thereto. a16z is not liable for any use of the foregoing, and users should proceed with caution and use at their own risk. See a16z.com/disclosures for more info._
