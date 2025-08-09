@@ -26,7 +26,25 @@ The [2024/kurdyukov1](https://www.ioccc.org/2024/kurdyukov1/index.html) IOCCC en
         :main();}
 ```
 
-Since it only uses the current timestamp and integer arithmetic, it is actually fairly straightforward to convert to Solidity (see [src/moon.sol](https://github.com/0xkarmacoma/moon.sol/blob/main/src/moon.sol))
+Since it only uses the current timestamp and integer arithmetic, it can easily be converted to Solidity (see [src/moon.sol](https://github.com/0xkarmacoma/moon.sol/blob/main/src/moon.sol)):
+
+```solidity
+    function n(int ts) public pure override returns (bytes memory o) {
+
+            o=new bytes(s);
+        int a=2551443;int  x=
+      -b;int y=2-b;int z=(    ((
+     int(ts)-592531)%a)<<9)    /a;
+     uint i;while(y<=b){(a,x    ,y
+     ,o[i++])=++x>=a?(a,-b,y     +
+     4,l):(x<0?(x*x+y*y<b*b)     ?
+     (1-x,-1,y,d):(a,x+1,y,     d
+      ):(a,x,y, p[(x<a*(~z    &
+        255) >> 8 ? 1 : 0   )^
+            uint(z>>8)]));}
+
+    }
+```
 
 The contract is deployed on mainnet at address XYZ and can be invoked by anyone. It will read the current timestamp from the blockchain and render the current moon phase:
 
