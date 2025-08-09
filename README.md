@@ -2,7 +2,7 @@
 
 ![Moon Phase Animation](static/moon.svg)
 
-## context
+## Context
 
 The [2024/kurdyukov1](https://www.ioccc.org/2024/kurdyukov1/index.html) IOCCC entry is a compact C program that reads the current time and prints the current phase of the moon from the Northern hemisphere:
 
