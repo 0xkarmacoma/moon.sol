@@ -4,27 +4,7 @@
 
 ## Context
 
-The [2024/kurdyukov1](https://www.ioccc.org/2024/kurdyukov1/index.html) IOCCC entry is a compact C program that reads the current time and prints the current phase of the moon from the Northern hemisphere:
-
-```c
-# prog.c
-
-#include <time.h>
-#include <stdio.h>
-
-        a,b=44,x,
-     y,z;main()  {!a
-   ?a=2551443,x=    -b
-  ,y=2-b,z=((time     (
- 0)-592531)%a<<9)/     a
- :putchar(++x>=a?x     =
- -b,y+=4,10:x<0?x=     x
- *x+y*y<b*b?a=1-x,     -
-  1:x+1,32:"#."[(     x
-   <a*(~z&255)>>    8)
-     ^z>>8]),y>  b?0
-        :main();}
-```
+The [2024/kurdyukov1](https://www.ioccc.org/2024/kurdyukov1/index.html) IOCCC entry is a compact C program that reads the current time and prints the current phase of the moon from the Northern hemisphere.
 
 Since it only uses the current timestamp and integer arithmetic, it can easily be converted to Solidity (see [src/moon.sol](https://github.com/0xkarmacoma/moon.sol/blob/main/src/moon.sol)):
 
@@ -46,7 +26,7 @@ Since it only uses the current timestamp and integer arithmetic, it can easily b
     }
 ```
 
-The contract is deployed on mainnet at address XYZ and can be invoked by anyone. It will read the current timestamp from the blockchain and render the current moon phase:
+The contract is deployed on mainnet at address XYZ and can be invoked by anyone. It will read the current timestamp from the blockchain and render the current phase of the moon:
 
 ```sh
 cast call XYZ | cast to-ascii
