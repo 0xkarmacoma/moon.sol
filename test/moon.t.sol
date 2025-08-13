@@ -22,7 +22,7 @@ contract MoonTest is Test {
         vm.warp(vm.unixTime() / 1000);
     }
 
-    function test_fullmoon_currenttime() public {
+    function test_fullmoon_currenttime() public view {
         // use this to avoid the extra spaces at the beginning or between args
         console.log("\n%s", string(f.northern()));
     }
