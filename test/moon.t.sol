@@ -2,7 +2,6 @@
 pragma solidity ^0.8.13;
 
 import {Test, console} from "forge-std/Test.sol";
-import {LibString} from "solady/utils/LibString.sol";
 
 import {moon} from "src/moon.sol";
 import {fullmoon} from "./fullmoon.sol";
@@ -57,6 +56,7 @@ contract MoonTest is Test {
         assertEq(mb, fb);
     }
 
+    /// run with --isolate
     function test_moon_northern_gas_snapshot() public view {
         m.n();
     }
