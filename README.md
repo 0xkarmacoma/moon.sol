@@ -26,10 +26,10 @@ Since it only uses the current timestamp and integer arithmetic, it can easily b
     }
 ```
 
-The contract is deployed on mainnet at address XYZ and can be invoked by anyone. It will read the current timestamp from the blockchain and render the current phase of the moon:
+The contract is deployed on mainnet at address `0xa1BED0c184E65D7E393FD8Cd873B37169ba24a29` and can be invoked by anyone. It will read the current timestamp from the blockchain and render the current phase of the moon:
 
 ```sh
-cast call XYZ | cast to-ascii
+cast call 0xa1BED0c184E65D7E393FD8Cd873B37169ba24a29 | cast to-ascii
 
                ..############
            ...###################
