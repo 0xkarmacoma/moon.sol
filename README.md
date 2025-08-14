@@ -79,6 +79,13 @@ cast call <addr> $(echo 0x123456 | cast to-int256) | cast to-ascii
 ./bin/animate.sh <addr>
 ```
 
+## Deployment
+
+```sh
+# mine a cute deploy addr
+cast create2 --starts-with a1bed0 --init-code $(forge inspect moon bytecode)
+```
+
 ## Acknowledgements
 
 Credit goes to Ilya Kurdyukov for the original C implementation as submitted to the IOCCC. All bugs and mistakes in the Solidity port are my own.

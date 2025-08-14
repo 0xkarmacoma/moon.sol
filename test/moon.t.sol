@@ -19,7 +19,7 @@ contract MoonTest is Test {
         f = new fullmoon();
 
         // set the time to the current time by default
-        vm.warp(vm.unixTime() / 1000);
+        // vm.warp(vm.unixTime() / 1000);
     }
 
     function test_fullmoon_currenttime() public view {
@@ -47,17 +47,35 @@ contract MoonTest is Test {
         console.log("\n%s", string(f.northern()));
     }
 
-    function test_moon_equal_to_fullmoon() public view {
+    /// run with --isolate
+    function test_moon_northern_gas_snapshot() public view {
+        m.n();
+    }
+
+    function _moon_equal_to_fullmoon(uint40 ts) public {
+        if (ts < 592531) {
+            ts += 592531;
+        }
+        vm.warp(ts);
+
         bytes memory mb = m.n();
         bytes memory fb = f.northern();
-
-        console.log("\n%s", string(mb));
 
         assertEq(mb, fb);
     }
 
-    /// run with --isolate
-    function test_moon_northern_gas_snapshot() public view {
-        m.n();
+    // sanity check at the current timestamp
+    function test_moon_equal_to_fullmoon() public {
+        _moon_equal_to_fullmoon(uint40(vm.unixTime() / 1000));
+    }
+
+    /// forge-config: default.fuzz.runs = 256
+    /// forge-config: heavy.fuzz.runs = 1000000
+    function test_fuzz_moon_equal_to_fullmoon(uint40 ts) public {
+        _moon_equal_to_fullmoon(ts);
+    }
+
+    function check_moon_equal_to_fullmoon(uint40 ts) public {
+        _moon_equal_to_fullmoon(ts);
     }
 }
