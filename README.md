@@ -26,10 +26,13 @@ Since it only uses the current timestamp and integer arithmetic, it can easily b
     }
 ```
 
-The contract is deployed on mainnet at address `0xa1BED0c184E65D7E393FD8Cd873B37169ba24a29` and can be invoked by anyone. It will read the current timestamp from the blockchain and render the current phase of the moon:
+The contract is [deployed on mainnet at address `0xA1BED01590001c1AE1Add6118863EF6e21Be830d`](https://etherscan.io/address/0xA1BED01590001c1AE1Add6118863EF6e21Be830d#code) and can be invoked by anyone. It will read the current timestamp from the blockchain and render the current phase of the moon:
 
 ```sh
-cast call 0xa1BED0c184E65D7E393FD8Cd873B37169ba24a29 | cast to-ascii
+cast call 0xA1BED01590001c1AE1Add6118863EF6e21Be830d | cast to-ascii
+```
+
+```
 
                ..############
            ...###################
@@ -83,7 +86,12 @@ cast call <addr> $(echo 0x123456 | cast to-int256) | cast to-ascii
 
 ```sh
 # mine a cute deploy addr
-cast create2 --starts-with a1bed0 --init-code $(forge inspect moon bytecode)
+cast create2 --starts-with A1BED0 --case-sensitive --init-code $(forge inspect moon bytecode)
+```
+
+```sh
+# deploy
+forge script MoonScript --rpc-url $(rpc mainnet-alchemy) --broadcast --verify $WALLET_OPTIONS
 ```
 
 ## Acknowledgements

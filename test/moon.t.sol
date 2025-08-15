@@ -19,7 +19,7 @@ contract MoonTest is Test {
         f = new fullmoon();
 
         // set the time to the current time by default
-        // vm.warp(vm.unixTime() / 1000);
+        vm.warp(vm.unixTime() / 1000);
     }
 
     function test_fullmoon_currenttime() public view {
@@ -72,10 +72,6 @@ contract MoonTest is Test {
     /// forge-config: default.fuzz.runs = 256
     /// forge-config: heavy.fuzz.runs = 1000000
     function test_fuzz_moon_equal_to_fullmoon(uint40 ts) public {
-        _moon_equal_to_fullmoon(ts);
-    }
-
-    function check_moon_equal_to_fullmoon(uint40 ts) public {
         _moon_equal_to_fullmoon(ts);
     }
 }
